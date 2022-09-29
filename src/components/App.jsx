@@ -4,15 +4,19 @@ import Form from './Form';
 import Section from './Section';
 import Filtration from './Filtration';
 import Contacts from './Contacts';
+import useLocalStorage from './Hooks';
 
-import { MAIN_WRAPPER } from './App.styled';
+import { MainWrapper } from './App.styled';
+
+const KEY = 'contacts';
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useLocalStorage(KEY, []);
   const [filter, setFilter] = useState('');
 
   const formSubmitHandler = data => {
     const findName = contacts.find(contact => contact.name === data.name);
+
     if (findName) {
       alert(`${data.name} is already in your contacts list`);
       return;
@@ -36,7 +40,7 @@ export default function App() {
   );
 
   return (
-    <MAIN_WRAPPER>
+    <MainWrapper>
       <Section title={'PhoneBook'}>
         <Form onSubmit={formSubmitHandler} />
       </Section>
@@ -48,6 +52,6 @@ export default function App() {
           onDeleteContact={handleDeleteContact}
         />
       </Section>
-    </MAIN_WRAPPER>
+    </MainWrapper>
   );
 }
