@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+@import 'react-toastify/dist/ReactToastify.min.css';
 
 body {
   margin: 0;

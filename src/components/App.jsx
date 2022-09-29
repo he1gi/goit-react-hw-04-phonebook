@@ -6,6 +6,8 @@ import Filtration from './Filtration';
 import Contacts from './Contacts';
 import useLocalStorage from './Hooks';
 
+import { ToastContainer, toast } from 'react-toastify';
+
 import { MainWrapper } from './App.styled';
 
 const KEY = 'contacts';
@@ -18,7 +20,10 @@ export default function App() {
     const findName = contacts.find(contact => contact.name === data.name);
 
     if (findName) {
-      alert(`${data.name} is already in your contacts list`);
+      // alert(`${data.name} is already in your contacts list`);
+      toast.error(`${data.name} is already in your contacts list`, {
+        autoClose: 1000,
+      });
       return;
     }
     setContacts(prevState => [...prevState, data]);
@@ -52,6 +57,7 @@ export default function App() {
           onDeleteContact={handleDeleteContact}
         />
       </Section>
+      <ToastContainer />
     </MainWrapper>
   );
 }
