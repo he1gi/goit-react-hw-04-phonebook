@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Btn, List, Item } from './Contacts.styled';
 
-function Contacts({ contacts, onDeleteContact }) {
+export default function Contacts({ contacts, onDeleteContact }) {
   return (
     <List>
       {contacts.map(({ name, id, number }) => (
@@ -28,5 +28,3 @@ Contacts.propTypes = {
   ),
   onDeleteContact: PropTypes.func.isRequired,
 };
-
-export default Contacts;
