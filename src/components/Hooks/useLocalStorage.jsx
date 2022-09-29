@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 
 export default function useLocalStorage(
   key,
-  defaultValue,
+  value,
   serialize = JSON.stringify,
   deserialize = JSON.parse
 ) {
   const [state, setState] = useState(
-    () => deserialize(window.localStorage.getItem(key)) ?? defaultValue
+    () => deserialize(window.localStorage.getItem(key)) ?? value
   );
 
   useEffect(() => {
